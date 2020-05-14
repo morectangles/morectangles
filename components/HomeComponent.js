@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Animated } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 class Home extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -10,19 +11,18 @@ class Home extends Component {
         };
     }
 
-    animateViewColor() {
-        Animated.loop(
-            Animated.sequence([
-                Animated.timing(this.state.squareColorValue, {
-                toValue: 1,
-                duration: 5000
-                })
-            ])
-        ).start();
-    }
-
     componentDidMount() {
         this.animateViewColor();
+    }
+    
+
+    animateViewColor() {
+        Animated.loop([
+            Animated.timing(this.state.squareColorValue, {
+                toValue: 1,
+                duration: 5000
+            })
+        ]).start();
     }
 
     render() {
@@ -35,7 +35,7 @@ class Home extends Component {
             <View style={styles.container}>
                 <Text>{`Welcome to Morectangles!`}</Text>
                 <Text>{`Would you like to play?\n`}</Text>
-                <Animatable.View style={{padding: 50, backgroundColor: bgColor}} onPress={() => <GameComponent />} />
+                <Animatable.View style={{padding: 50, backgroundColor: bgColor}} onPress={() => navigate('Game')} />
             </View>
         )
     }
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
     },
     SquareView: {
         width: 120,
