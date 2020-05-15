@@ -1,17 +1,18 @@
 import React from 'react';
-import Main from './components/MainComponent';
 import { StyleSheet, Text, View } from 'react-native';
+import Main from './components/MainComponent';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   return (
-      <View style={styles.container}>
-        <Main />
-      </View>
+    <NavigationContainer>
+      <Main />
+    </NavigationContainer>
   );
 }
 
+/*
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -20,3 +21,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+*/
