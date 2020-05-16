@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Animated } from 'react-native';
+import { StyleSheet, View, Text, Animated, Button, TouchableHighlight } from 'react-native';
 import Square from './SquareComponent';
 import * as Animatable from 'react-native-animatable';
+
+
+function ButtonFunc() {
+    return <Button title='Hello' onPress={() => navigation.navigate('Game')} />
+}
 
 function Home({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <Text onPress={() => navigation.navigate('Game')} >{`Welcome to Morectangles!`}</Text>
-            <Text onPress={() => navigation.navigate('Game')} >{`Would you like to play?\n`}</Text>
-            <Square onPress={() => navigation.navigate('Game')} />
+            <Text onPress={() => navigation.push('Game')} >{`Welcome to Morectangles!`}</Text>
+            <Text onPress={() => navigation.push('Game')} >{`Would you like to play?\n`}</Text>
+            <TouchableHighlight onPress={() => navigation.navigate('Game')} >
+            <Square />
+            </TouchableHighlight>
         </View>
     )
 

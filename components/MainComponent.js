@@ -4,40 +4,35 @@ import Game from './GameComponent';
 import { View, Text } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { createDrawerNavigator, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
+const GameStack = createStackNavigator();
 
-function RootStack() {
-    return(
-        <Stack.Navigator 
-            initialRouteName='Home'
-            screenOptions={{gestureEnabled: true}}>
-            <Stack.Screen  
-                name='Home'
-                component={Home} />
-            <Stack.Screen  
-                name='Game'
-                component={Game}
-            />
-        </Stack.Navigator>
-    );
-}
+const HomeStackScreen = () => (
+    <Stack.Navigator>
+        <Stack.Screen name='Home' component={Home} />
+    </Stack.Navigator>
+)
+
+const GameStackScreen = () => (
+    <GameStack.Navigator>
+        <GameStack.Screen name='Game' component={Game} options={{headerShown: false}} />
+    </GameStack.Navigator>
+)
 
 const Drawer = createDrawerNavigator();
-
-function MyDrawer() {
-    return (
-        <Drawer.Navigator initialRouteName='Home' >
-            <Drawer.Screen name="Home" component={Home} />
-        </Drawer.Navigator>
-    );
-} 
 
 function Main() {
   
     return (
-        <MyDrawer />
+        <NavigationContainer>
+            <Drawer.Navigator>
+                <Drawer.Screen name="Home" component={HomeStackScreen} />
+                <Drawer.Screen name="Game" component={GameStackScreen} />
+            </Drawer.Navigator>
+        </NavigationContainer>
     );
 
 }
