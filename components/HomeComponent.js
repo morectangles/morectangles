@@ -12,10 +12,10 @@ function Home({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <Text onPress={() => navigation.push('Game')} >{`Welcome to Morectangles!`}</Text>
-            <Text onPress={() => navigation.push('Game')} >{`Would you like to play?\n`}</Text>
+            <Text>{`Welcome to Morectangles!`}</Text>
+            <Text>{`Would you like to play?\n`}</Text>
             <TouchableHighlight onPress={() => navigation.navigate('Game')} >
-            <Square />
+                <Square />
             </TouchableHighlight>
         </View>
     )
